@@ -1,0 +1,15 @@
+logs/*
+logs
+sim_outputs/*
+sim_outputs
+data/complete_cases.csv
+data/*.parquet
+data/microvascular_bootstrap_results/*
+data/microvascular_bootstrap_results/
+data/simulations/bootstrap_variance/
+data/simulations/bootstrap_variance/*
+data/final*
+data/*.rds
+models/*
+models
+Rplots.pdf

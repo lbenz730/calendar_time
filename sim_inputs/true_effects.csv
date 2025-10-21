@@ -1,0 +1,649 @@
+parameter_id,trial_id,true_ate,trt_change,shift
+1,1,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,2,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,3,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,4,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,5,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,6,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,7,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,8,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,9,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,10,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,11,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,12,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,13,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,14,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,15,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,16,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,17,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,18,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,19,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,20,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,21,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,22,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,23,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,24,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,25,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,26,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,27,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,28,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,29,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,30,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,31,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,32,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,33,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,34,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,35,-0.21156000000000003,Constant,Flexible Covariate Shift
+1,36,-0.21156000000000003,Constant,Flexible Covariate Shift
+2,1,-0.21156000000000003,Constant,Linear Covariate Shift
+2,2,-0.21156000000000003,Constant,Linear Covariate Shift
+2,3,-0.21156000000000003,Constant,Linear Covariate Shift
+2,4,-0.21156000000000003,Constant,Linear Covariate Shift
+2,5,-0.21156000000000003,Constant,Linear Covariate Shift
+2,6,-0.21156000000000003,Constant,Linear Covariate Shift
+2,7,-0.21156000000000003,Constant,Linear Covariate Shift
+2,8,-0.21156000000000003,Constant,Linear Covariate Shift
+2,9,-0.21156000000000003,Constant,Linear Covariate Shift
+2,10,-0.21156000000000003,Constant,Linear Covariate Shift
+2,11,-0.21156000000000003,Constant,Linear Covariate Shift
+2,12,-0.21156000000000003,Constant,Linear Covariate Shift
+2,13,-0.21156000000000003,Constant,Linear Covariate Shift
+2,14,-0.21156000000000003,Constant,Linear Covariate Shift
+2,15,-0.21156000000000003,Constant,Linear Covariate Shift
+2,16,-0.21156000000000003,Constant,Linear Covariate Shift
+2,17,-0.21156000000000003,Constant,Linear Covariate Shift
+2,18,-0.21156000000000003,Constant,Linear Covariate Shift
+2,19,-0.21156000000000003,Constant,Linear Covariate Shift
+2,20,-0.21156000000000003,Constant,Linear Covariate Shift
+2,21,-0.21156000000000003,Constant,Linear Covariate Shift
+2,22,-0.21156000000000003,Constant,Linear Covariate Shift
+2,23,-0.21156000000000003,Constant,Linear Covariate Shift
+2,24,-0.21156000000000003,Constant,Linear Covariate Shift
+2,25,-0.21156000000000003,Constant,Linear Covariate Shift
+2,26,-0.21156000000000003,Constant,Linear Covariate Shift
+2,27,-0.21156000000000003,Constant,Linear Covariate Shift
+2,28,-0.21156000000000003,Constant,Linear Covariate Shift
+2,29,-0.21156000000000003,Constant,Linear Covariate Shift
+2,30,-0.21156000000000003,Constant,Linear Covariate Shift
+2,31,-0.21156000000000003,Constant,Linear Covariate Shift
+2,32,-0.21156000000000003,Constant,Linear Covariate Shift
+2,33,-0.21156000000000003,Constant,Linear Covariate Shift
+2,34,-0.21156000000000003,Constant,Linear Covariate Shift
+2,35,-0.21156000000000003,Constant,Linear Covariate Shift
+2,36,-0.21156000000000003,Constant,Linear Covariate Shift
+3,1,-0.21156000000000003,Constant,No Covariate Shift
+3,2,-0.21156000000000003,Constant,No Covariate Shift
+3,3,-0.21156000000000003,Constant,No Covariate Shift
+3,4,-0.21156000000000003,Constant,No Covariate Shift
+3,5,-0.21156000000000003,Constant,No Covariate Shift
+3,6,-0.21156000000000003,Constant,No Covariate Shift
+3,7,-0.21156000000000003,Constant,No Covariate Shift
+3,8,-0.21156000000000003,Constant,No Covariate Shift
+3,9,-0.21156000000000003,Constant,No Covariate Shift
+3,10,-0.21156000000000003,Constant,No Covariate Shift
+3,11,-0.21156000000000003,Constant,No Covariate Shift
+3,12,-0.21156000000000003,Constant,No Covariate Shift
+3,13,-0.21156000000000003,Constant,No Covariate Shift
+3,14,-0.21156000000000003,Constant,No Covariate Shift
+3,15,-0.21156000000000003,Constant,No Covariate Shift
+3,16,-0.21156000000000003,Constant,No Covariate Shift
+3,17,-0.21156000000000003,Constant,No Covariate Shift
+3,18,-0.21156000000000003,Constant,No Covariate Shift
+3,19,-0.21156000000000003,Constant,No Covariate Shift
+3,20,-0.21156000000000003,Constant,No Covariate Shift
+3,21,-0.21156000000000003,Constant,No Covariate Shift
+3,22,-0.21156000000000003,Constant,No Covariate Shift
+3,23,-0.21156000000000003,Constant,No Covariate Shift
+3,24,-0.21156000000000003,Constant,No Covariate Shift
+3,25,-0.21156000000000003,Constant,No Covariate Shift
+3,26,-0.21156000000000003,Constant,No Covariate Shift
+3,27,-0.21156000000000003,Constant,No Covariate Shift
+3,28,-0.21156000000000003,Constant,No Covariate Shift
+3,29,-0.21156000000000003,Constant,No Covariate Shift
+3,30,-0.21156000000000003,Constant,No Covariate Shift
+3,31,-0.21156000000000003,Constant,No Covariate Shift
+3,32,-0.21156000000000003,Constant,No Covariate Shift
+3,33,-0.21156000000000003,Constant,No Covariate Shift
+3,34,-0.21156000000000003,Constant,No Covariate Shift
+3,35,-0.21156000000000003,Constant,No Covariate Shift
+3,36,-0.21156000000000003,Constant,No Covariate Shift
+4,1,-0.21688694317902527,Effect Modification,Flexible Covariate Shift
+4,2,-0.20816167554346146,Effect Modification,Flexible Covariate Shift
+4,3,-0.1995714398309632,Effect Modification,Flexible Covariate Shift
+4,4,-0.19123568080036688,Effect Modification,Flexible Covariate Shift
+4,5,-0.18327309480420573,Effect Modification,Flexible Covariate Shift
+4,6,-0.17579629794683876,Effect Modification,Flexible Covariate Shift
+4,7,-0.16892387031747613,Effect Modification,Flexible Covariate Shift
+4,8,-0.1627620903174662,Effect Modification,Flexible Covariate Shift
+4,9,-0.15748636829755722,Effect Modification,Flexible Covariate Shift
+4,10,-0.1532159761932873,Effect Modification,Flexible Covariate Shift
+4,11,-0.1499965098603389,Effect Modification,Flexible Covariate Shift
+4,12,-0.14805368310774053,Effect Modification,Flexible Covariate Shift
+4,13,-0.1474510580628013,Effect Modification,Flexible Covariate Shift
+4,14,-0.14813487435125197,Effect Modification,Flexible Covariate Shift
+4,15,-0.14995994613265862,Effect Modification,Flexible Covariate Shift
+4,16,-0.15279178434328344,Effect Modification,Flexible Covariate Shift
+4,17,-0.1562304368510077,Effect Modification,Flexible Covariate Shift
+4,18,-0.16001209950419057,Effect Modification,Flexible Covariate Shift
+4,19,-0.16412098922948146,Effect Modification,Flexible Covariate Shift
+4,20,-0.16823705809553274,Effect Modification,Flexible Covariate Shift
+4,21,-0.17216423373731887,Effect Modification,Flexible Covariate Shift
+4,22,-0.17567944001078536,Effect Modification,Flexible Covariate Shift
+4,23,-0.1783759516099073,Effect Modification,Flexible Covariate Shift
+4,24,-0.180244303686968,Effect Modification,Flexible Covariate Shift
+4,25,-0.1810993298027898,Effect Modification,Flexible Covariate Shift
+4,26,-0.1806938898867323,Effect Modification,Flexible Covariate Shift
+4,27,-0.1794042920045074,Effect Modification,Flexible Covariate Shift
+4,28,-0.17709849785542742,Effect Modification,Flexible Covariate Shift
+4,29,-0.17390565997480287,Effect Modification,Flexible Covariate Shift
+4,30,-0.17004241937722017,Effect Modification,Flexible Covariate Shift
+4,31,-0.16561789151836862,Effect Modification,Flexible Covariate Shift
+4,32,-0.16072431641619342,Effect Modification,Flexible Covariate Shift
+4,33,-0.1553169256914555,Effect Modification,Flexible Covariate Shift
+4,34,-0.14965456563928767,Effect Modification,Flexible Covariate Shift
+4,35,-0.1437376683999592,Effect Modification,Flexible Covariate Shift
+4,36,-0.13775524950898857,Effect Modification,Flexible Covariate Shift
+5,1,-0.21683012528400195,Effect Modification,Linear Covariate Shift
+5,2,-0.21755897968502272,Effect Modification,Linear Covariate Shift
+5,3,-0.21838288537237793,Effect Modification,Linear Covariate Shift
+5,4,-0.21913361285888427,Effect Modification,Linear Covariate Shift
+5,5,-0.21994442765474956,Effect Modification,Linear Covariate Shift
+5,6,-0.22070571331518085,Effect Modification,Linear Covariate Shift
+5,7,-0.22148630648968715,Effect Modification,Linear Covariate Shift
+5,8,-0.22222463772666526,Effect Modification,Linear Covariate Shift
+5,9,-0.22297976598865707,Effect Modification,Linear Covariate Shift
+5,10,-0.22379936140201057,Effect Modification,Linear Covariate Shift
+5,11,-0.22454388639122908,Effect Modification,Linear Covariate Shift
+5,12,-0.225366018712878,Effect Modification,Linear Covariate Shift
+5,13,-0.226136393368619,Effect Modification,Linear Covariate Shift
+5,14,-0.2268896341754644,Effect Modification,Linear Covariate Shift
+5,15,-0.2276605549352913,Effect Modification,Linear Covariate Shift
+5,16,-0.22843225991202434,Effect Modification,Linear Covariate Shift
+5,17,-0.22926209272635856,Effect Modification,Linear Covariate Shift
+5,18,-0.23001597991777128,Effect Modification,Linear Covariate Shift
+5,19,-0.23073211394938986,Effect Modification,Linear Covariate Shift
+5,20,-0.23149373956348834,Effect Modification,Linear Covariate Shift
+5,21,-0.2322453116669712,Effect Modification,Linear Covariate Shift
+5,22,-0.23305822640463708,Effect Modification,Linear Covariate Shift
+5,23,-0.2337847052867197,Effect Modification,Linear Covariate Shift
+5,24,-0.23460781712828052,Effect Modification,Linear Covariate Shift
+5,25,-0.23540126864043437,Effect Modification,Linear Covariate Shift
+5,26,-0.23614331942125918,Effect Modification,Linear Covariate Shift
+5,27,-0.2369014648460045,Effect Modification,Linear Covariate Shift
+5,28,-0.23773396492119242,Effect Modification,Linear Covariate Shift
+5,29,-0.23846313880152814,Effect Modification,Linear Covariate Shift
+5,30,-0.23927754452351743,Effect Modification,Linear Covariate Shift
+5,31,-0.24003520152120253,Effect Modification,Linear Covariate Shift
+5,32,-0.2407749123539551,Effect Modification,Linear Covariate Shift
+5,33,-0.2415740124595804,Effect Modification,Linear Covariate Shift
+5,34,-0.2423918647404007,Effect Modification,Linear Covariate Shift
+5,35,-0.2431397913085142,Effect Modification,Linear Covariate Shift
+5,36,-0.2439006946824884,Effect Modification,Linear Covariate Shift
+6,1,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,2,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,3,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,4,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,5,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,6,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,7,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,8,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,9,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,10,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,11,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,12,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,13,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,14,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,15,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,16,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,17,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,18,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,19,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,20,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,21,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,22,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,23,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,24,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,25,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,26,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,27,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,28,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,29,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,30,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,31,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,32,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,33,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,34,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,35,-0.19954675204034608,Effect Modification,No Covariate Shift
+6,36,-0.19954675204034608,Effect Modification,No Covariate Shift
+7,1,-0.21056000000000002,Linear,Flexible Covariate Shift
+7,2,-0.20956000000000002,Linear,Flexible Covariate Shift
+7,3,-0.20856000000000002,Linear,Flexible Covariate Shift
+7,4,-0.20756000000000002,Linear,Flexible Covariate Shift
+7,5,-0.20656000000000002,Linear,Flexible Covariate Shift
+7,6,-0.20556000000000002,Linear,Flexible Covariate Shift
+7,7,-0.20456000000000002,Linear,Flexible Covariate Shift
+7,8,-0.20356000000000002,Linear,Flexible Covariate Shift
+7,9,-0.20256000000000002,Linear,Flexible Covariate Shift
+7,10,-0.20156000000000002,Linear,Flexible Covariate Shift
+7,11,-0.20056000000000002,Linear,Flexible Covariate Shift
+7,12,-0.19956000000000002,Linear,Flexible Covariate Shift
+7,13,-0.19856000000000001,Linear,Flexible Covariate Shift
+7,14,-0.19756,Linear,Flexible Covariate Shift
+7,15,-0.19656,Linear,Flexible Covariate Shift
+7,16,-0.19556,Linear,Flexible Covariate Shift
+7,17,-0.19456,Linear,Flexible Covariate Shift
+7,18,-0.19356,Linear,Flexible Covariate Shift
+7,19,-0.19256,Linear,Flexible Covariate Shift
+7,20,-0.19156,Linear,Flexible Covariate Shift
+7,21,-0.19056,Linear,Flexible Covariate Shift
+7,22,-0.18956,Linear,Flexible Covariate Shift
+7,23,-0.18856,Linear,Flexible Covariate Shift
+7,24,-0.18756,Linear,Flexible Covariate Shift
+7,25,-0.18656,Linear,Flexible Covariate Shift
+7,26,-0.18556,Linear,Flexible Covariate Shift
+7,27,-0.18456000000000003,Linear,Flexible Covariate Shift
+7,28,-0.18356000000000003,Linear,Flexible Covariate Shift
+7,29,-0.18256000000000003,Linear,Flexible Covariate Shift
+7,30,-0.18156000000000003,Linear,Flexible Covariate Shift
+7,31,-0.18056000000000003,Linear,Flexible Covariate Shift
+7,32,-0.17956000000000003,Linear,Flexible Covariate Shift
+7,33,-0.17856000000000002,Linear,Flexible Covariate Shift
+7,34,-0.17756000000000002,Linear,Flexible Covariate Shift
+7,35,-0.17656000000000002,Linear,Flexible Covariate Shift
+7,36,-0.17556000000000002,Linear,Flexible Covariate Shift
+8,1,-0.21056000000000002,Linear,Linear Covariate Shift
+8,2,-0.20956000000000002,Linear,Linear Covariate Shift
+8,3,-0.20856000000000002,Linear,Linear Covariate Shift
+8,4,-0.20756000000000002,Linear,Linear Covariate Shift
+8,5,-0.20656000000000002,Linear,Linear Covariate Shift
+8,6,-0.20556000000000002,Linear,Linear Covariate Shift
+8,7,-0.20456000000000002,Linear,Linear Covariate Shift
+8,8,-0.20356000000000002,Linear,Linear Covariate Shift
+8,9,-0.20256000000000002,Linear,Linear Covariate Shift
+8,10,-0.20156000000000002,Linear,Linear Covariate Shift
+8,11,-0.20056000000000002,Linear,Linear Covariate Shift
+8,12,-0.19956000000000002,Linear,Linear Covariate Shift
+8,13,-0.19856000000000001,Linear,Linear Covariate Shift
+8,14,-0.19756,Linear,Linear Covariate Shift
+8,15,-0.19656,Linear,Linear Covariate Shift
+8,16,-0.19556,Linear,Linear Covariate Shift
+8,17,-0.19456,Linear,Linear Covariate Shift
+8,18,-0.19356,Linear,Linear Covariate Shift
+8,19,-0.19256,Linear,Linear Covariate Shift
+8,20,-0.19156,Linear,Linear Covariate Shift
+8,21,-0.19056,Linear,Linear Covariate Shift
+8,22,-0.18956,Linear,Linear Covariate Shift
+8,23,-0.18856,Linear,Linear Covariate Shift
+8,24,-0.18756,Linear,Linear Covariate Shift
+8,25,-0.18656,Linear,Linear Covariate Shift
+8,26,-0.18556,Linear,Linear Covariate Shift
+8,27,-0.18456000000000003,Linear,Linear Covariate Shift
+8,28,-0.18356000000000003,Linear,Linear Covariate Shift
+8,29,-0.18256000000000003,Linear,Linear Covariate Shift
+8,30,-0.18156000000000003,Linear,Linear Covariate Shift
+8,31,-0.18056000000000003,Linear,Linear Covariate Shift
+8,32,-0.17956000000000003,Linear,Linear Covariate Shift
+8,33,-0.17856000000000002,Linear,Linear Covariate Shift
+8,34,-0.17756000000000002,Linear,Linear Covariate Shift
+8,35,-0.17656000000000002,Linear,Linear Covariate Shift
+8,36,-0.17556000000000002,Linear,Linear Covariate Shift
+9,1,-0.21056000000000002,Linear,No Covariate Shift
+9,2,-0.20956000000000002,Linear,No Covariate Shift
+9,3,-0.20856000000000002,Linear,No Covariate Shift
+9,4,-0.20756000000000002,Linear,No Covariate Shift
+9,5,-0.20656000000000002,Linear,No Covariate Shift
+9,6,-0.20556000000000002,Linear,No Covariate Shift
+9,7,-0.20456000000000002,Linear,No Covariate Shift
+9,8,-0.20356000000000002,Linear,No Covariate Shift
+9,9,-0.20256000000000002,Linear,No Covariate Shift
+9,10,-0.20156000000000002,Linear,No Covariate Shift
+9,11,-0.20056000000000002,Linear,No Covariate Shift
+9,12,-0.19956000000000002,Linear,No Covariate Shift
+9,13,-0.19856000000000001,Linear,No Covariate Shift
+9,14,-0.19756,Linear,No Covariate Shift
+9,15,-0.19656,Linear,No Covariate Shift
+9,16,-0.19556,Linear,No Covariate Shift
+9,17,-0.19456,Linear,No Covariate Shift
+9,18,-0.19356,Linear,No Covariate Shift
+9,19,-0.19256,Linear,No Covariate Shift
+9,20,-0.19156,Linear,No Covariate Shift
+9,21,-0.19056,Linear,No Covariate Shift
+9,22,-0.18956,Linear,No Covariate Shift
+9,23,-0.18856,Linear,No Covariate Shift
+9,24,-0.18756,Linear,No Covariate Shift
+9,25,-0.18656,Linear,No Covariate Shift
+9,26,-0.18556,Linear,No Covariate Shift
+9,27,-0.18456000000000003,Linear,No Covariate Shift
+9,28,-0.18356000000000003,Linear,No Covariate Shift
+9,29,-0.18256000000000003,Linear,No Covariate Shift
+9,30,-0.18156000000000003,Linear,No Covariate Shift
+9,31,-0.18056000000000003,Linear,No Covariate Shift
+9,32,-0.17956000000000003,Linear,No Covariate Shift
+9,33,-0.17856000000000002,Linear,No Covariate Shift
+9,34,-0.17756000000000002,Linear,No Covariate Shift
+9,35,-0.17656000000000002,Linear,No Covariate Shift
+9,36,-0.17556000000000002,Linear,No Covariate Shift
+10,1,-0.21564662523974718,Linear + Effect Modification,Flexible Covariate Shift
+10,2,-0.20593928549059315,Linear + Effect Modification,Flexible Covariate Shift
+10,3,-0.19635335279590022,Linear + Effect Modification,Flexible Covariate Shift
+10,4,-0.18700626735228498,Linear + Effect Modification,Flexible Covariate Shift
+10,5,-0.17803551703814657,Linear + Effect Modification,Flexible Covariate Shift
+10,6,-0.16946721949327864,Linear + Effect Modification,Flexible Covariate Shift
+10,7,-0.16163442129041072,Linear + Effect Modification,Flexible Covariate Shift
+10,8,-0.1545473538454535,Linear + Effect Modification,Flexible Covariate Shift
+10,9,-0.1483200657670547,Linear + Effect Modification,Flexible Covariate Shift
+10,10,-0.14295095357918502,Linear + Effect Modification,Flexible Covariate Shift
+10,11,-0.13877167625689957,Linear + Effect Modification,Flexible Covariate Shift
+10,12,-0.13580067308699928,Linear + Effect Modification,Flexible Covariate Shift
+10,13,-0.13423348836266774,Linear + Effect Modification,Flexible Covariate Shift
+10,14,-0.1339244454227587,Linear + Effect Modification,Flexible Covariate Shift
+10,15,-0.13475273571164897,Linear + Effect Modification,Flexible Covariate Shift
+10,16,-0.13649811949401885,Linear + Effect Modification,Flexible Covariate Shift
+10,17,-0.1389366228275628,Linear + Effect Modification,Flexible Covariate Shift
+10,18,-0.14177130308795963,Linear + Effect Modification,Flexible Covariate Shift
+10,19,-0.14497293475487133,Linear + Effect Modification,Flexible Covariate Shift
+10,20,-0.14804525759829024,Linear + Effect Modification,Flexible Covariate Shift
+10,21,-0.1509389377642159,Linear + Effect Modification,Flexible Covariate Shift
+10,22,-0.15335692113144056,Linear + Effect Modification,Flexible Covariate Shift
+10,23,-0.15516514996688163,Linear + Effect Modification,Flexible Covariate Shift
+10,24,-0.15606679353643033,Linear + Effect Modification,Flexible Covariate Shift
+10,25,-0.15582838825472084,Linear + Effect Modification,Flexible Covariate Shift
+10,26,-0.15452069178011643,Linear + Effect Modification,Flexible Covariate Shift
+10,27,-0.15214534971031943,Linear + Effect Modification,Flexible Covariate Shift
+10,28,-0.14881680554202578,Linear + Effect Modification,Flexible Covariate Shift
+10,29,-0.14463726578127933,Linear + Effect Modification,Flexible Covariate Shift
+10,30,-0.13991137626010328,Linear + Effect Modification,Flexible Covariate Shift
+10,31,-0.13438749786549975,Linear + Effect Modification,Flexible Covariate Shift
+10,32,-0.12843142388734272,Linear + Effect Modification,Flexible Covariate Shift
+10,33,-0.12203556044948305,Linear + Effect Modification,Flexible Covariate Shift
+10,34,-0.11542537764314927,Linear + Effect Modification,Flexible Covariate Shift
+10,35,-0.10848030245096534,Linear + Effect Modification,Flexible Covariate Shift
+10,36,-0.10156411744352814,Linear + Effect Modification,Flexible Covariate Shift
+11,1,-0.21576058998156697,Linear + Effect Modification,Linear Covariate Shift
+11,2,-0.21556217116926019,Linear + Effect Modification,Linear Covariate Shift
+11,3,-0.21536167749473636,Linear + Effect Modification,Linear Covariate Shift
+11,4,-0.21511060743335375,Linear + Effect Modification,Linear Covariate Shift
+11,5,-0.2148370885818108,Linear + Effect Modification,Linear Covariate Shift
+11,6,-0.21466123982778626,Linear + Effect Modification,Linear Covariate Shift
+11,7,-0.21438832188963208,Linear + Effect Modification,Linear Covariate Shift
+11,8,-0.2141636637419752,Linear + Effect Modification,Linear Covariate Shift
+11,9,-0.2139307776196026,Linear + Effect Modification,Linear Covariate Shift
+11,10,-0.2137521859689625,Linear + Effect Modification,Linear Covariate Shift
+11,11,-0.213530229707482,Linear + Effect Modification,Linear Covariate Shift
+11,12,-0.21330642841072867,Linear + Effect Modification,Linear Covariate Shift
+11,13,-0.21308562787065613,Linear + Effect Modification,Linear Covariate Shift
+11,14,-0.21284242775405043,Linear + Effect Modification,Linear Covariate Shift
+11,15,-0.21262906142744004,Linear + Effect Modification,Linear Covariate Shift
+11,16,-0.21239253138633887,Linear + Effect Modification,Linear Covariate Shift
+11,17,-0.21218557257873133,Linear + Effect Modification,Linear Covariate Shift
+11,18,-0.21194980959627607,Linear + Effect Modification,Linear Covariate Shift
+11,19,-0.2116845275403076,Linear + Effect Modification,Linear Covariate Shift
+11,20,-0.21150479090939858,Linear + Effect Modification,Linear Covariate Shift
+11,21,-0.21127849875003807,Linear + Effect Modification,Linear Covariate Shift
+11,22,-0.21098769346699534,Linear + Effect Modification,Linear Covariate Shift
+11,23,-0.21078691883609318,Linear + Effect Modification,Linear Covariate Shift
+11,24,-0.21055736434134822,Linear + Effect Modification,Linear Covariate Shift
+11,25,-0.21031709507357402,Linear + Effect Modification,Linear Covariate Shift
+11,26,-0.21014407890390677,Linear + Effect Modification,Linear Covariate Shift
+11,27,-0.20992826580345775,Linear + Effect Modification,Linear Covariate Shift
+11,28,-0.20972056700205494,Linear + Effect Modification,Linear Covariate Shift
+11,29,-0.20944952074438888,Linear + Effect Modification,Linear Covariate Shift
+11,30,-0.2091985730647095,Linear + Effect Modification,Linear Covariate Shift
+11,31,-0.20895468142530885,Linear + Effect Modification,Linear Covariate Shift
+11,32,-0.20877708560943556,Linear + Effect Modification,Linear Covariate Shift
+11,33,-0.2085430088207985,Linear + Effect Modification,Linear Covariate Shift
+11,34,-0.20830125714393258,Linear + Effect Modification,Linear Covariate Shift
+11,35,-0.20805891136570243,Linear + Effect Modification,Linear Covariate Shift
+11,36,-0.20788342917036046,Linear + Effect Modification,Linear Covariate Shift
+12,1,-0.19875123844274295,Linear + Effect Modification,No Covariate Shift
+12,2,-0.19775123844274295,Linear + Effect Modification,No Covariate Shift
+12,3,-0.19675123844274295,Linear + Effect Modification,No Covariate Shift
+12,4,-0.19575123844274295,Linear + Effect Modification,No Covariate Shift
+12,5,-0.19475123844274295,Linear + Effect Modification,No Covariate Shift
+12,6,-0.19375123844274295,Linear + Effect Modification,No Covariate Shift
+12,7,-0.19275123844274294,Linear + Effect Modification,No Covariate Shift
+12,8,-0.19175123844274294,Linear + Effect Modification,No Covariate Shift
+12,9,-0.19075123844274294,Linear + Effect Modification,No Covariate Shift
+12,10,-0.18975123844274294,Linear + Effect Modification,No Covariate Shift
+12,11,-0.18875123844274294,Linear + Effect Modification,No Covariate Shift
+12,12,-0.18775123844274294,Linear + Effect Modification,No Covariate Shift
+12,13,-0.18675123844274294,Linear + Effect Modification,No Covariate Shift
+12,14,-0.18575123844274294,Linear + Effect Modification,No Covariate Shift
+12,15,-0.18475123844274294,Linear + Effect Modification,No Covariate Shift
+12,16,-0.18375123844274294,Linear + Effect Modification,No Covariate Shift
+12,17,-0.18275123844274294,Linear + Effect Modification,No Covariate Shift
+12,18,-0.18175123844274294,Linear + Effect Modification,No Covariate Shift
+12,19,-0.18075123844274293,Linear + Effect Modification,No Covariate Shift
+12,20,-0.17975123844274293,Linear + Effect Modification,No Covariate Shift
+12,21,-0.17875123844274293,Linear + Effect Modification,No Covariate Shift
+12,22,-0.17775123844274293,Linear + Effect Modification,No Covariate Shift
+12,23,-0.17675123844274293,Linear + Effect Modification,No Covariate Shift
+12,24,-0.17575123844274293,Linear + Effect Modification,No Covariate Shift
+12,25,-0.17475123844274293,Linear + Effect Modification,No Covariate Shift
+12,26,-0.17375123844274293,Linear + Effect Modification,No Covariate Shift
+12,27,-0.17275123844274293,Linear + Effect Modification,No Covariate Shift
+12,28,-0.1717512384427429,Linear + Effect Modification,No Covariate Shift
+12,29,-0.17075123844274293,Linear + Effect Modification,No Covariate Shift
+12,30,-0.1697512384427429,Linear + Effect Modification,No Covariate Shift
+12,31,-0.1687512384427429,Linear + Effect Modification,No Covariate Shift
+12,32,-0.1677512384427429,Linear + Effect Modification,No Covariate Shift
+12,33,-0.1667512384427429,Linear + Effect Modification,No Covariate Shift
+12,34,-0.1657512384427429,Linear + Effect Modification,No Covariate Shift
+12,35,-0.1647512384427429,Linear + Effect Modification,No Covariate Shift
+12,36,-0.1637512384427429,Linear + Effect Modification,No Covariate Shift
+13,1,-0.21156000000000003,Spline,Flexible Covariate Shift
+13,2,-0.2083059285903609,Spline,Flexible Covariate Shift
+13,3,-0.20508671290374691,Spline,Flexible Covariate Shift
+13,4,-0.20193720866318335,Spline,Flexible Covariate Shift
+13,5,-0.1988922715916953,Spline,Flexible Covariate Shift
+13,6,-0.19598675741230798,Spline,Flexible Covariate Shift
+13,7,-0.19325552184804654,Spline,Flexible Covariate Shift
+13,8,-0.19073342062193618,Spline,Flexible Covariate Shift
+13,9,-0.1884553094570021,Spline,Flexible Covariate Shift
+13,10,-0.18645604407626942,Spline,Flexible Covariate Shift
+13,11,-0.18477048020276338,Spline,Flexible Covariate Shift
+13,12,-0.18343347355950915,Spline,Flexible Covariate Shift
+13,13,-0.18247934058426118,Spline,Flexible Covariate Shift
+13,14,-0.1819100405985325,Spline,Flexible Covariate Shift
+13,15,-0.18167737939366185,Spline,Flexible Covariate Shift
+13,16,-0.1817288484788224,Spline,Flexible Covariate Shift
+13,17,-0.1820119393631873,Spline,Flexible Covariate Shift
+13,18,-0.1824741435559298,Spline,Flexible Covariate Shift
+13,19,-0.18306295256622301,Spline,Flexible Covariate Shift
+13,20,-0.18372585790324017,Spline,Flexible Covariate Shift
+13,21,-0.18441035107615444,Spline,Flexible Covariate Shift
+13,22,-0.185063923594139,Spline,Flexible Covariate Shift
+13,23,-0.18563406696636706,Spline,Flexible Covariate Shift
+13,24,-0.18606827270201176,Spline,Flexible Covariate Shift
+13,25,-0.18631749706375886,Spline,Flexible Covariate Shift
+13,26,-0.186372974073877,Spline,Flexible Covariate Shift
+13,27,-0.1862519234059788,Spline,Flexible Covariate Shift
+13,28,-0.18597199782786586,Spline,Flexible Covariate Shift
+13,29,-0.18555085010733982,Spline,Flexible Covariate Shift
+13,30,-0.18500613301220234,Spline,Flexible Covariate Shift
+13,31,-0.18435549931025508,Spline,Flexible Covariate Shift
+13,32,-0.1836166017692996,Spline,Flexible Covariate Shift
+13,33,-0.18280709315713756,Spline,Flexible Covariate Shift
+13,34,-0.18194462624157062,Spline,Flexible Covariate Shift
+13,35,-0.18104685379040042,Spline,Flexible Covariate Shift
+13,36,-0.18013142857142858,Spline,Flexible Covariate Shift
+14,1,-0.21156000000000003,Spline,Linear Covariate Shift
+14,2,-0.2083059285903609,Spline,Linear Covariate Shift
+14,3,-0.20508671290374691,Spline,Linear Covariate Shift
+14,4,-0.20193720866318335,Spline,Linear Covariate Shift
+14,5,-0.1988922715916953,Spline,Linear Covariate Shift
+14,6,-0.19598675741230798,Spline,Linear Covariate Shift
+14,7,-0.19325552184804654,Spline,Linear Covariate Shift
+14,8,-0.19073342062193618,Spline,Linear Covariate Shift
+14,9,-0.1884553094570021,Spline,Linear Covariate Shift
+14,10,-0.18645604407626942,Spline,Linear Covariate Shift
+14,11,-0.18477048020276338,Spline,Linear Covariate Shift
+14,12,-0.18343347355950915,Spline,Linear Covariate Shift
+14,13,-0.18247934058426118,Spline,Linear Covariate Shift
+14,14,-0.1819100405985325,Spline,Linear Covariate Shift
+14,15,-0.18167737939366185,Spline,Linear Covariate Shift
+14,16,-0.1817288484788224,Spline,Linear Covariate Shift
+14,17,-0.1820119393631873,Spline,Linear Covariate Shift
+14,18,-0.1824741435559298,Spline,Linear Covariate Shift
+14,19,-0.18306295256622301,Spline,Linear Covariate Shift
+14,20,-0.18372585790324017,Spline,Linear Covariate Shift
+14,21,-0.18441035107615444,Spline,Linear Covariate Shift
+14,22,-0.185063923594139,Spline,Linear Covariate Shift
+14,23,-0.18563406696636706,Spline,Linear Covariate Shift
+14,24,-0.18606827270201176,Spline,Linear Covariate Shift
+14,25,-0.18631749706375886,Spline,Linear Covariate Shift
+14,26,-0.186372974073877,Spline,Linear Covariate Shift
+14,27,-0.1862519234059788,Spline,Linear Covariate Shift
+14,28,-0.18597199782786586,Spline,Linear Covariate Shift
+14,29,-0.18555085010733982,Spline,Linear Covariate Shift
+14,30,-0.18500613301220234,Spline,Linear Covariate Shift
+14,31,-0.18435549931025508,Spline,Linear Covariate Shift
+14,32,-0.1836166017692996,Spline,Linear Covariate Shift
+14,33,-0.18280709315713756,Spline,Linear Covariate Shift
+14,34,-0.18194462624157062,Spline,Linear Covariate Shift
+14,35,-0.18104685379040042,Spline,Linear Covariate Shift
+14,36,-0.18013142857142858,Spline,Linear Covariate Shift
+15,1,-0.21156000000000003,Spline,No Covariate Shift
+15,2,-0.2083059285903609,Spline,No Covariate Shift
+15,3,-0.20508671290374691,Spline,No Covariate Shift
+15,4,-0.20193720866318335,Spline,No Covariate Shift
+15,5,-0.1988922715916953,Spline,No Covariate Shift
+15,6,-0.19598675741230798,Spline,No Covariate Shift
+15,7,-0.19325552184804654,Spline,No Covariate Shift
+15,8,-0.19073342062193618,Spline,No Covariate Shift
+15,9,-0.1884553094570021,Spline,No Covariate Shift
+15,10,-0.18645604407626942,Spline,No Covariate Shift
+15,11,-0.18477048020276338,Spline,No Covariate Shift
+15,12,-0.18343347355950915,Spline,No Covariate Shift
+15,13,-0.18247934058426118,Spline,No Covariate Shift
+15,14,-0.1819100405985325,Spline,No Covariate Shift
+15,15,-0.18167737939366185,Spline,No Covariate Shift
+15,16,-0.1817288484788224,Spline,No Covariate Shift
+15,17,-0.1820119393631873,Spline,No Covariate Shift
+15,18,-0.1824741435559298,Spline,No Covariate Shift
+15,19,-0.18306295256622301,Spline,No Covariate Shift
+15,20,-0.18372585790324017,Spline,No Covariate Shift
+15,21,-0.18441035107615444,Spline,No Covariate Shift
+15,22,-0.185063923594139,Spline,No Covariate Shift
+15,23,-0.18563406696636706,Spline,No Covariate Shift
+15,24,-0.18606827270201176,Spline,No Covariate Shift
+15,25,-0.18631749706375886,Spline,No Covariate Shift
+15,26,-0.186372974073877,Spline,No Covariate Shift
+15,27,-0.1862519234059788,Spline,No Covariate Shift
+15,28,-0.18597199782786586,Spline,No Covariate Shift
+15,29,-0.18555085010733982,Spline,No Covariate Shift
+15,30,-0.18500613301220234,Spline,No Covariate Shift
+15,31,-0.18435549931025508,Spline,No Covariate Shift
+15,32,-0.1836166017692996,Spline,No Covariate Shift
+15,33,-0.18280709315713756,Spline,No Covariate Shift
+15,34,-0.18194462624157062,Spline,No Covariate Shift
+15,35,-0.18104685379040042,Spline,No Covariate Shift
+15,36,-0.18013142857142858,Spline,No Covariate Shift
+16,1,-0.21672207481843986,Spline + Effect Modification,Flexible Covariate Shift
+16,2,-0.20476045110120797,Spline + Effect Modification,Flexible Covariate Shift
+16,3,-0.19295972327063704,Spline + Effect Modification,Flexible Covariate Shift
+16,4,-0.18141733855311803,Spline + Effect Modification,Flexible Covariate Shift
+16,5,-0.17041315089193876,Spline + Effect Modification,Flexible Covariate Shift
+16,6,-0.16004447008683137,Spline + Effect Modification,Flexible Covariate Shift
+16,7,-0.1504010109369478,Spline + Effect Modification,Flexible Covariate Shift
+16,8,-0.14182134333152133,Spline + Effect Modification,Flexible Covariate Shift
+16,9,-0.134284702656062,Spline + Effect Modification,Flexible Covariate Shift
+16,10,-0.12790344907868112,Spline + Effect Modification,Flexible Covariate Shift
+16,11,-0.1230978026833622,Spline + Effect Modification,Flexible Covariate Shift
+16,12,-0.1197933711220533,Spline + Effect Modification,Flexible Covariate Shift
+16,13,-0.11818244516716461,Spline + Effect Modification,Flexible Covariate Shift
+16,14,-0.11836439279378091,Spline + Effect Modification,Flexible Covariate Shift
+16,15,-0.12003886939609272,Spline + Effect Modification,Flexible Covariate Shift
+16,16,-0.12277253211395911,Spline + Effect Modification,Flexible Covariate Shift
+16,17,-0.12640024815727696,Spline + Effect Modification,Flexible Covariate Shift
+16,18,-0.13082784426129596,Spline + Effect Modification,Flexible Covariate Shift
+16,19,-0.13549760253320678,Spline + Effect Modification,Flexible Covariate Shift
+16,20,-0.14028525248547302,Spline + Effect Modification,Flexible Covariate Shift
+16,21,-0.14486879584649792,Spline + Effect Modification,Flexible Covariate Shift
+16,22,-0.14897702493133969,Spline + Effect Modification,Flexible Covariate Shift
+16,23,-0.1523374837388346,Spline + Effect Modification,Flexible Covariate Shift
+16,24,-0.1546354783261377,Spline + Effect Modification,Flexible Covariate Shift
+16,25,-0.15566494975351794,Spline + Effect Modification,Flexible Covariate Shift
+16,26,-0.1553432027564433,Spline + Effect Modification,Flexible Covariate Shift
+16,27,-0.1539145982330559,Spline + Effect Modification,Flexible Covariate Shift
+16,28,-0.15130292215248453,Spline + Effect Modification,Flexible Covariate Shift
+16,29,-0.14775379732335545,Spline + Effect Modification,Flexible Covariate Shift
+16,30,-0.14338808926382945,Spline + Effect Modification,Flexible Covariate Shift
+16,31,-0.1382843678028955,Spline + Effect Modification,Flexible Covariate Shift
+16,32,-0.13252511489167448,Spline + Effect Modification,Flexible Covariate Shift
+16,33,-0.12644583887126115,Spline + Effect Modification,Flexible Covariate Shift
+16,34,-0.11983580620493643,Spline + Effect Modification,Flexible Covariate Shift
+16,35,-0.11310670006130494,Spline + Effect Modification,Flexible Covariate Shift
+16,36,-0.10612463763058644,Spline + Effect Modification,Flexible Covariate Shift
+17,1,-0.2167951469135027,Spline + Effect Modification,Linear Covariate Shift
+17,2,-0.21429709913599795,Spline + Effect Modification,Linear Covariate Shift
+17,3,-0.21189943257718294,Spline + Effect Modification,Linear Covariate Shift
+17,4,-0.2094093034353546,Spline + Effect Modification,Linear Covariate Shift
+17,5,-0.2071876906175329,Spline + Effect Modification,Linear Covariate Shift
+17,6,-0.20504764497343222,Spline + Effect Modification,Linear Covariate Shift
+17,7,-0.20315003247937566,Spline + Effect Modification,Linear Covariate Shift
+17,8,-0.20132311733710348,Spline + Effect Modification,Linear Covariate Shift
+17,9,-0.19983636504111463,Spline + Effect Modification,Linear Covariate Shift
+17,10,-0.19865300239632283,Spline + Effect Modification,Linear Covariate Shift
+17,11,-0.19772517039994034,Spline + Effect Modification,Linear Covariate Shift
+17,12,-0.19717598793234453,Spline + Effect Modification,Linear Covariate Shift
+17,13,-0.1970110833758551,Spline + Effect Modification,Linear Covariate Shift
+17,14,-0.19717902139040439,Spline + Effect Modification,Linear Covariate Shift
+17,15,-0.1977170345150324,Spline + Effect Modification,Linear Covariate Shift
+17,16,-0.19855252730402786,Spline + Effect Modification,Linear Covariate Shift
+17,17,-0.19963207044936176,Spline + Effect Modification,Linear Covariate Shift
+17,18,-0.20087809719165692,Spline + Effect Modification,Linear Covariate Shift
+17,19,-0.2022422732464814,Spline + Effect Modification,Linear Covariate Shift
+17,20,-0.20362193264100914,Spline + Effect Modification,Linear Covariate Shift
+17,21,-0.20519135437073233,Spline + Effect Modification,Linear Covariate Shift
+17,22,-0.20651759636490402,Spline + Effect Modification,Linear Covariate Shift
+17,23,-0.20780066390455101,Spline + Effect Modification,Linear Covariate Shift
+17,24,-0.20905507519366254,Spline + Effect Modification,Linear Covariate Shift
+17,25,-0.21012761061095608,Spline + Effect Modification,Linear Covariate Shift
+17,26,-0.21091230006069067,Spline + Effect Modification,Linear Covariate Shift
+17,27,-0.2116716393443519,Spline + Effect Modification,Linear Covariate Shift
+17,28,-0.2121018943618167,Spline + Effect Modification,Linear Covariate Shift
+17,29,-0.21243609251696824,Spline + Effect Modification,Linear Covariate Shift
+17,30,-0.21265875718595648,Spline + Effect Modification,Linear Covariate Shift
+17,31,-0.21282999875952285,Spline + Effect Modification,Linear Covariate Shift
+17,32,-0.21286790626945282,Spline + Effect Modification,Linear Covariate Shift
+17,33,-0.21277080090338113,Spline + Effect Modification,Linear Covariate Shift
+17,34,-0.2127093786455138,Spline + Effect Modification,Linear Covariate Shift
+17,35,-0.21259004120117245,Spline + Effect Modification,Linear Covariate Shift
+17,36,-0.2124733589595595,Spline + Effect Modification,Linear Covariate Shift
+18,1,-0.1996472001341811,Spline + Effect Modification,No Covariate Shift
+18,2,-0.19639312872454204,Spline + Effect Modification,No Covariate Shift
+18,3,-0.19317391303792805,Spline + Effect Modification,No Covariate Shift
+18,4,-0.19002440879736446,Spline + Effect Modification,No Covariate Shift
+18,5,-0.18697947172587634,Spline + Effect Modification,No Covariate Shift
+18,6,-0.184073957546489,Spline + Effect Modification,No Covariate Shift
+18,7,-0.18134272198222764,Spline + Effect Modification,No Covariate Shift
+18,8,-0.17882062075611724,Spline + Effect Modification,No Covariate Shift
+18,9,-0.1765425095911831,Spline + Effect Modification,No Covariate Shift
+18,10,-0.17454324421045048,Spline + Effect Modification,No Covariate Shift
+18,11,-0.17285768033694443,Spline + Effect Modification,No Covariate Shift
+18,12,-0.17152067369369023,Spline + Effect Modification,No Covariate Shift
+18,13,-0.1705665407184423,Spline + Effect Modification,No Covariate Shift
+18,14,-0.16999724073271355,Spline + Effect Modification,No Covariate Shift
+18,15,-0.1697645795278429,Spline + Effect Modification,No Covariate Shift
+18,16,-0.16981604861300342,Spline + Effect Modification,No Covariate Shift
+18,17,-0.17009913949736838,Spline + Effect Modification,No Covariate Shift
+18,18,-0.17056134369011094,Spline + Effect Modification,No Covariate Shift
+18,19,-0.17115015270040407,Spline + Effect Modification,No Covariate Shift
+18,20,-0.17181305803742114,Spline + Effect Modification,No Covariate Shift
+18,21,-0.17249755121033555,Spline + Effect Modification,No Covariate Shift
+18,22,-0.17315112372832014,Spline + Effect Modification,No Covariate Shift
+18,23,-0.1737212671005481,Spline + Effect Modification,No Covariate Shift
+18,24,-0.1741554728361929,Spline + Effect Modification,No Covariate Shift
+18,25,-0.17440469719793988,Spline + Effect Modification,No Covariate Shift
+18,26,-0.1744601742080581,Spline + Effect Modification,No Covariate Shift
+18,27,-0.17433912354015985,Spline + Effect Modification,No Covariate Shift
+18,28,-0.174059197962047,Spline + Effect Modification,No Covariate Shift
+18,29,-0.17363805024152085,Spline + Effect Modification,No Covariate Shift
+18,30,-0.17309333314638348,Spline + Effect Modification,No Covariate Shift
+18,31,-0.17244269944443608,Spline + Effect Modification,No Covariate Shift
+18,32,-0.1717038019034806,Spline + Effect Modification,No Covariate Shift
+18,33,-0.1708942932913186,Spline + Effect Modification,No Covariate Shift
+18,34,-0.1700318263757517,Spline + Effect Modification,No Covariate Shift
+18,35,-0.16913405392458142,Spline + Effect Modification,No Covariate Shift
+18,36,-0.16821862870560972,Spline + Effect Modification,No Covariate Shift

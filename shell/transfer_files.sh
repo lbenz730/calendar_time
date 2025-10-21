@@ -1,0 +1,1 @@
+scp -r * lbenz@fasselogin.rc.fas.harvard.edu:~/tv_effects/
