@@ -29,7 +29,7 @@ Benz, L., Mukherjee, R., Wang, R., Arterburn, D., Fischer, H., Lee, C., Shortree
 * __specify_inputs.R__: Specify and visualize structure of treatment effects across simulation scenarios (Figure 3)
 * __compute_true_sigma_gamma_ratios.R__: Script to compute and visualize the true values of $\frac{\sigma_m^2}{\sigma_m^2 + \gamma_m^2}$ for simulation data generating process.
 * __run_simulation_pipeline.R__: Wrapper to run simulation iterations
-* __analyze_sim_results.R__: Analysis of simulation results (Figure 4)
+* __analyze_sim_results.R__: Analysis of simulation results (Figure 4, S3)
 * __latex_table.R__: Generate summary table of sim parameters (Table S1)
 
 ## Simulation Inputs (`sim_inputs/`)
