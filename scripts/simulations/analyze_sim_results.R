@@ -56,7 +56,7 @@ p1 <-
        y = expression(paste('Average ', hat(theta)[m])),
        color = 'Underlying Treatment\nEffect Structure',
        title = expression(paste('Estimated Proportion of Variation in ', widehat(chi)['j,m'],  ' Not Attributable to Distribution Shift')),
-       tag = 'A)'
+       tag = 'B)'
   )
 
 
@@ -129,7 +129,7 @@ p2 <-
        color = expression(paste('Projection ', psi(m * ";" * bold(beta)))),
        shape = '# of Standard Deviations Tolerance (c)',
        title = 'Frequency of Projection Selection',
-       tag = 'B)'
+       tag = 'A)'
        # subtitle = 'Simulation Results'
   )
 
@@ -144,6 +144,18 @@ input_summary <-
                               outcome_model %in% c('spline', 'linear') ~ 'Null 1',
                               covariate_shift == 'no_covariate_shift' & outcome_model %in% c('linear_effect_mod', 'spline_effect_mod') ~ 'Null 1',
                               T ~ 'Alternative'))
+
+### Hypothesis Testing Results 
+### Loading in all hypothesis testing results
+df_hypothesis <- 
+  bind_rows(
+    map_dfr(dir('sim_outputs/n100/hypothesis_testing/', full.names = T), read_parquet),
+    map_dfr(dir('sim_outputs/n500/hypothesis_testing/', full.names = T), read_parquet),
+    map_dfr(dir('sim_outputs/n1000/hypothesis_testing/', full.names = T), read_parquet),
+    map_dfr(dir('sim_outputs/n5000/hypothesis_testing/', full.names = T), read_parquet),
+    map_dfr(dir('sim_outputs/n10000/hypothesis_testing/', full.names = T), read_parquet),
+    map_dfr(dir('sim_outputs/n25000/hypothesis_testing/', full.names = T), read_parquet)
+  )
 
 df_hypothesis <- 
   df_hypothesis %>% 
