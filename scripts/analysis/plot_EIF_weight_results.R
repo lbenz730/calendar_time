@@ -113,6 +113,54 @@ df_hypothesis <-
                                     'RYGB vs. SG'),
          'interval' = paste0('(', sprintf('%0.3f', qlow), ', ', sprintf('%0.3f', qhigh), ')'))
 
+
+df_risk <- read_csv(glue('{data_dir}/tv_effects/weight_projection_risk.csv'))
+df_risk <- 
+  df_risk %>% 
+  mutate('outcome' = case_when(outcome == 'delta_6mo' ~ '6 Months',
+                               outcome == 'delta_1yr' ~ '1 Year',
+                               outcome == 'delta_2yr' ~ '2 Years', 
+                               outcome == 'delta_3yr' ~ '3 Years'),
+         'outcome' = fct_relevel(outcome, '6 Months'), 
+         'comparison' = case_when(procedures == 'AGB/RYGB/SLEEVE' ~ 'Surgery vs. No Surgery',
+                                  procedures == 'RYGB' ~ 'RYGB vs. No Surgery',
+                                  procedures == 'SLEEVE' ~ 'SG vs. No Surgery',
+                                  procedures == 'RYGB/SLEEVE' ~ 'RYGB vs. SG'),
+         'comparison' = fct_relevel(comparison,
+                                    'Surgery vs. No Surgery', 
+                                    'RYGB vs. No Surgery', 
+                                    'SG vs. No Surgery',
+                                    'RYGB vs. SG')) %>% 
+  mutate('projection' =  gsub('_', ' (df = ', tools::toTitleCase(gsub('psi_', '', projection))), 
+         'projection' = ifelse(grepl('Spline', projection), paste0(projection, ')'), projection)) %>% 
+  mutate('projection' = fct_relevel(projection, 'Constant', 'Linear', 'Cubic', 'Spline (df = 2)', 'Spline (df = 3)')) %>% 
+  mutate('projection' = case_when(projection == 'Spline (df = 2)' ~ 'Spline (2 Knots)',
+                                  projection == 'Spline (df = 3)' ~ 'Spline (3 Knots)',
+                                  T ~ projection)) %>% 
+  mutate('projection' = fct_relevel(projection, 'Constant', 'Linear', 'Cubic', 'Spline (2 Knots)', 'Spline (3 Knots)')) %>% 
+  group_by(outcome, procedures, weights) %>% 
+  mutate('min_risk' = risk == min(risk),
+         'min_risk_adj' = risk_adj == min(risk_adj),
+         'within_tol' = abs(risk_adj-min(risk_adj))/weighted_sd[which.min(risk_adj)] <= 1/4,
+         'min_risk_within_tol' = as.numeric(projection) == min(as.numeric(projection[within_tol]))) %>% 
+  select(-within_tol) %>% 
+  ungroup()
+
+### Table S1
+df_risk %>% 
+  group_by(comparison, outcome) %>% 
+  mutate('sd_diff' = abs( risk_adj - min(risk_adj) )/weighted_sd[which.min(risk_adj)]) %>% 
+  mutate('summary' = paste0(sprintf('%0.3f', risk_adj), ' (', sprintf('%0.2f', sd_diff), ')')) %>% 
+  ungroup() %>% 
+  select(comparison, outcome, projection, summary) %>% 
+  pivot_wider(names_from = projection,
+              values_from = summary) %>% 
+  arrange(comparison, outcome) %>% 
+  kbl(align = 'c', format = 'latex') %>% 
+  collapse_rows(1)
+
+
+
 ### Latex Table for Main Paper
 df_latex <- 
   df_hypothesis %>% 

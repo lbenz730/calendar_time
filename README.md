@@ -9,7 +9,7 @@ Benz, L., Mukherjee, R., Wang, R., Arterburn, D., Fischer, H., Lee, C., Shortree
 
 ### Data (`scripts/data`)
 
-* __build_weight_trials.R__: Build target trials for TTE dataset w/ relative % weight change as the outcome
+* __build_weight_trials.R__: Build target trials for TTE dataset w/ relative \% weight change as the outcome
 * __process_medications.R__: Script to process some hypertension + antilipemic medications for use in the weight loss trials dataset.
 
 ### Analysis (`scripts/analysis`)
@@ -19,7 +19,7 @@ Benz, L., Mukherjee, R., Wang, R., Arterburn, D., Fischer, H., Lee, C., Shortree
 * __EIF_weight_projections.R__: Projection step (estimation of $\widehat\beta$)
 * __standardization_EIF_weight.R__: Standardization analysis to compute $\widehat\chi_{j,m}$
 * __hypothesis_testing.R__: Run hypothesis testing for $\theta$ statistic 
-* __plot_EIF_weight_results.R__: Plot results from data application (Figure 5, Table 2)
+* __plot_EIF_weight_results.R__: Plot results from data application (Figure 5, Table 2, Table S1)
 * __plot_confounder_distributions.R__: Look at patterns of covariates over time (Figures 1, S1, S2)
 
 
@@ -30,7 +30,7 @@ Benz, L., Mukherjee, R., Wang, R., Arterburn, D., Fischer, H., Lee, C., Shortree
 * __compute_true_sigma_gamma_ratios.R__: Script to compute and visualize the true values of $\frac{\sigma_m^2}{\sigma_m^2 + \gamma_m^2}$ for simulation data generating process.
 * __run_simulation_pipeline.R__: Wrapper to run simulation iterations
 * __analyze_sim_results.R__: Analysis of simulation results (Figure 4, S3)
-* __latex_table.R__: Generate summary table of sim parameters (Table S1)
+* __latex_table.R__: Generate summary table of sim parameters (Table S2)
 
 ## Simulation Inputs (`sim_inputs/`)
 .rds files containing the simulation parameters for each of the 18 simulation scenarios
