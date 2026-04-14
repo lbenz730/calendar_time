@@ -1,6 +1,6 @@
 # Calendar Time-Varying Effects
 
-Benz, L., Mukherjee, R., Wang, R., Arterburn, D., Fischer, H., Lee, C., Shortreed, S.M., Haneuse, S., and Levis, A.W. "A Statistical Framework for Understanding Causal Effects that Vary by Treatment Initiation Time in EHR-based Studies" _Under Review_ ([Pre-Print]( LINK TO COME ))
+Benz, L., Mukherjee, R., Wang, R., Arterburn, D., Fischer, H., Lee, C., Shortreed, S.M., Levis, A.W., and Haneuse, S. "A Statistical Framework for Understanding Causal Effects that Vary by Treatment Initiation Time in EHR-based Studies" _Under Review_ ([Pre-Print]( http://arxiv.org/abs/2512.19553 ))
 
 
 ## R Scripts (`scripts/`)
