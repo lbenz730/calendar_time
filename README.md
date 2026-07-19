@@ -20,7 +20,8 @@ Benz, L., Mukherjee, R., Wang, R., Arterburn, D., Fischer, H., Lee, C., Shortree
 * __standardization_EIF_weight.R__: Standardization analysis to compute $\widehat\chi_{j,m}$
 * __hypothesis_testing.R__: Run hypothesis testing for $\theta$ statistic 
 * __plot_EIF_weight_results.R__: Plot results from data application (Figure 5, Table 2, Table S1)
-* __plot_confounder_distributions.R__: Look at patterns of covariates over time (Figures 1, S1, S2)
+* __plot_confounder_distributions.R__: Look at patterns of covariates over time (Figures 1, S2, S3)
+* __plot_outcome_missingness.R__: Look at patterns of missingness in outcomes over time (Figures S1)
 
 
 ### Simulations (`scripts/simulations`)
