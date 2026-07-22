@@ -72,6 +72,58 @@ df_transport <-
                                     'SG vs. No Surgery',
                                     'RYGB vs. SG'))
 
+
+### Annotation data frames targeting specific facets
+### Adjust m_highlight, j_highlight, x, y, xend, yend to match your data
+
+m_highlight <- 1  ### fixed m for gamma annotation
+j_highlight <- 1   ### fixed j for sigma annotation
+
+### gamma_m^2 annotation - vertical arrow (variation across populations, fixed m)
+df_gamma_arrow <- tibble(
+  comparison = factor('Surgery vs. No Surgery', 
+                      levels = levels(df_transport$comparison)),
+  outcome = factor('1 Year', 
+                   levels = levels(df_transport$outcome)),
+  x = m_highlight,
+  xend = m_highlight,
+  y = -0.22,    
+  yend = -0.15  
+)
+
+df_gamma_label <- tibble(
+  comparison = factor('Surgery vs. No Surgery', 
+                      levels = levels(df_transport$comparison)),
+  outcome = factor('1 Year', 
+                   levels = levels(df_transport$outcome)),
+  x = m_highlight + 2,
+  y = mean(c(-0.24, -0.15) + 0.03),
+  label = 'hat(gamma)[m]^2~"(variation across populations for fixed calendar time)"'
+)
+
+### sigma_j^2 annotation - horizontal arrow (variation across time, fixed j)
+df_sigma_arrow <- tibble(
+  comparison = factor('Surgery vs. No Surgery', 
+                      levels = levels(df_transport$comparison)),
+  outcome = factor('6 Months', 
+                   levels = levels(df_transport$outcome)),
+  x = 20,    
+  xend = 60, 
+  y = -0.27, 
+  yend = -0.27
+)
+
+df_sigma_label <- tibble(
+  comparison = factor('Surgery vs. No Surgery', 
+                      levels = levels(df_transport$comparison)),
+  outcome = factor('6 Months', 
+                   levels = levels(df_transport$outcome)),
+  x = mean(c(20, 60)),
+  y = -0.3,
+  label = 'hat(sigma)[j]^2~"(variation across calendar time for fixed population)"'
+)
+
+
 p2 <- 
   ggplot(df_transport %>% filter(comparison %in% c('Surgery vs. No Surgery', 
                                                    'SG vs. No Surgery')), aes(x = trial_id, y = chi_cross)) + 
@@ -84,7 +136,31 @@ p2 <-
        y = 'Difference in Mean %-Weight Change',
        title = expression(paste('Illustration of ', widehat(chi)["j,m"], ' for Select Comparisons')),
        color = 'Covariate Distribution Trial Index (j)',
-       plot.tag = 'B)')
+       plot.tag = 'B)') + 
+  ### gamma annotation
+  geom_segment(data = df_gamma_arrow,
+               aes(x = x, xend = xend, y = y, yend = yend),
+               arrow = arrow(ends = 'both', length = unit(0.1, 'inches')),
+               color = 'black', linewidth = 0.7, alpha = 0.4,
+               inherit.aes = FALSE) +
+  geom_text(data = df_gamma_label,
+            aes(x = x, y = y, label = label),
+            parse = TRUE,
+            hjust = 0, size = 2.55,
+            inherit.aes = FALSE) +
+  
+  ### sigma annotation
+  geom_segment(data = df_sigma_arrow,
+               aes(x = x, xend = xend, y = y, yend = yend),
+               arrow = arrow(ends = 'both', length = unit(0.1, 'inches')),
+               color = 'black', linewidth = 0.7, alpha = 0.4,
+               inherit.aes = FALSE) +
+  geom_text(data = df_sigma_label,
+            aes(x = x, y = y, label = label),
+            parse = TRUE,
+            hjust = 0.5, size = 2.55,
+            inherit.aes = FALSE) 
+
 
 p1/p2
 
