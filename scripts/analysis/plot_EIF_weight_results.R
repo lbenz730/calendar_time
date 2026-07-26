@@ -222,7 +222,7 @@ df_risk <-
   select(-within_tol) %>% 
   ungroup()
 
-### Table S1
+### Table S2
 df_risk %>% 
   group_by(comparison, outcome) %>% 
   mutate('sd_diff' = abs( risk_adj - min(risk_adj) )/weighted_sd[which.min(risk_adj)]) %>% 
@@ -253,3 +253,46 @@ df_latex <-
 kbl(df_latex, align = 'c', format = 'latex') %>% 
   collapse_rows(1)
 
+### Non-parametric Ratio Statistic (theta_m) by time (Figure S4)
+df_sigma_m <- 
+  df_transport %>% 
+  pivot_longer(cols = contains('chi'),
+               names_to = 'estimator',
+               values_to = 'chi_hat') %>% 
+  filter(!is.na(chi_hat)) %>% 
+  group_by(outcome, comparison, baseline_trial, estimator) %>% 
+  summarise('sigma2_m' = 1/(n()-1) * sum( (chi_hat - chi_hat[trial_id == baseline_trial])^2 )) %>% 
+  ungroup()
+
+df_gamma_m <- 
+  df_transport %>% 
+  pivot_longer(cols = contains('chi'),
+               names_to = 'estimator',
+               values_to = 'chi_hat') %>% 
+  filter(!is.na(chi_hat)) %>% 
+  group_by(outcome, comparison, trial_id, estimator) %>% 
+  summarise('gamma2_m' = 1/(n()-1) * sum( (chi_hat - chi_hat[trial_id == baseline_trial])^2 )) %>% 
+  ungroup()
+
+df_sigma <- 
+  df_gamma_m %>% 
+  inner_join(df_sigma_m, by = c('trial_id' = 'baseline_trial', 
+                                'comparison', 'outcome', 'estimator')) %>% 
+  mutate('sigma_ratio' = sqrt(sigma2_m)/(sqrt(sigma2_m) + sqrt(gamma2_m)),
+         'sigma2_ratio' = sigma2_m/(sigma2_m + gamma2_m)) %>% 
+  filter(estimator == 'chi_cross') %>% 
+  mutate('estimator_' = case_when(estimator == 'chi_DR' ~ 'widehat(chi)[m]^DR*(P[j])',
+                                  estimator == 'chi_DRj' ~ 'widehat(chi)[m]^DRCR*(P[j])',
+                                  estimator == 'chi_gformula' ~ 'widehat(chi)[m]^gformula*(P[j])',
+                                  estimator == 'chi_cross' ~ 'widehat(chi)["j,m"](P)'))
+
+
+ggplot(df_sigma, aes(x = trial_id, y = sigma2_ratio)) + 
+  facet_grid(outcome~comparison) + 
+  geom_point(aes(color = outcome), alpha = 0.8) + 
+  scale_y_continuous(labels = scales::percent, breaks = seq(0, 1, 0.1)) +
+  labs(x = 'Trial Index (m)',
+       y = expression(paste('% of Variation ', theta[m])),
+       color = 'Time Since Trial Baseline',
+       title = 'Proportion of Variation in Cross-Trial Effects Not Attributable to Distribution Shift')
+ggsave('figures/theta_m.png', height = 9, width = 16)

@@ -19,19 +19,20 @@ Benz, L., Mukherjee, R., Wang, R., Arterburn, D., Fischer, H., Lee, C., Shortree
 * __EIF_weight_projections.R__: Projection step (estimation of $\widehat\beta$)
 * __standardization_EIF_weight.R__: Standardization analysis to compute $\widehat\chi_{j,m}$
 * __hypothesis_testing.R__: Run hypothesis testing for $\theta$ statistic 
-* __plot_EIF_weight_results.R__: Plot results from data application (Figure 5, Table 2, Table S1)
-* __plot_confounder_distributions.R__: Look at patterns of covariates over time (Figures 1, S2, S3)
-* __plot_outcome_missingness.R__: Look at patterns of missingness in outcomes over time (Figures S1)
+* __plot_EIF_weight_results.R__: Plot results from data application (Figure 5, Table 2, Table S2)
+* __plot_confounder_distributions.R__: Look at patterns of covariates over time (Figures 1, S1, S2)
+* __plot_outcome_missingness.R__: Look at patterns of missingness in outcomes over time (Figures S3)
+* __population_summary_table.R__: Create summary of baseline patient characteristics by surgical status (Table S1)
 
 
 ### Simulations (`scripts/simulations`)
 * __inform_sims.R__: Get realistic range of coefficients for generating simulated data
 * __generate_data.R__: Functions to generate simulated data sets and compute true effects for simulation scenarios
-* __specify_inputs.R__: Specify and visualize structure of treatment effects across simulation scenarios (Figure 3)
+* __specify_inputs.R__: Specify and visualize structure of treatment effects across simulation scenarios (Figure 2)
 * __compute_true_sigma_gamma_ratios.R__: Script to compute and visualize the true values of $\frac{\sigma_m^2}{\sigma_m^2 + \gamma_m^2}$ for simulation data generating process.
 * __run_simulation_pipeline.R__: Wrapper to run simulation iterations
-* __analyze_sim_results.R__: Analysis of simulation results (Figure 4, S3)
-* __latex_table.R__: Generate summary table of sim parameters (Table S2)
+* __analyze_sim_results.R__: Analysis of simulation results (Figures S)
+* __latex_table.R__: Generate summary table of sim parameters (Table S3)
 
 ## Simulation Inputs (`sim_inputs/`)
 .rds files containing the simulation parameters for each of the 18 simulation scenarios
