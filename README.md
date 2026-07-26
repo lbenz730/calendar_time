@@ -2,6 +2,10 @@
 
 Benz, L., Mukherjee, R., Wang, R., Arterburn, D., Fischer, H., Lee, C., Shortreed, S.M., Levis, A.W., and Haneuse, S. "A Statistical Framework for Understanding Causal Effects that Vary by Treatment Initiation Time in EHR-based Studies" _Under Review_ ([Pre-Print]( http://arxiv.org/abs/2512.19553 ))
 
+This work has been presented at:
+
+* ENAR 2026 ([Slides](https://lukebenz.com/slides/enar_2026.pdf))
+
 
 ## R Scripts (`scripts/`)
 
