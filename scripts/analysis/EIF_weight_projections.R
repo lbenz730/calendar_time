@@ -16,7 +16,7 @@ data_dir <- '/n/haneuse_ehr_l3/V1.0/clean_datasets'
 
 ### Model Selection of Candidate Projections
 df_risk <- NULL
-df_mse <- NULL
+df_diff <- NULL
 for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
   for(procedures_ in c('AGB/RYGB/SLEEVE', 'RYGB', 'SLEEVE', 'RYGB/SLEEVE')) {
     cat(outcome_, procedures_, '\n')
@@ -62,6 +62,7 @@ for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
     ### w(m) options
     ### unifom w(m) = 1
     ### inv_elig = 1/P(E[m] = 1) (eg. to cancel out P(E[m] = 1) in estimating eqn
+    tmp_IF <- NULL
     for(fold in 1:max(df_chi$fold_id)) {
       df_fold <- 
         df_chi %>% 
@@ -210,23 +211,9 @@ for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
           rename('psi_hat' = psi) %>%
           mutate('weights' = weights)
         
-        proj_summary <- 
-          df_projections %>% 
-          group_by(projection) %>% 
-          summarise('weighted_sd' = weighted.mean(sd, p_elig))
-        
         
         ### Evaluate Loss Function
-        fold_mse <- 
-          df_projections %>% 
-          group_by(projection) %>% 
-          summarise('mse' = sum( (psi_hat - chi_DR)^2 ),
-                    'wELIG_mse' = sum( p_elig * (psi_hat - chi_DR)^2 )) %>% 
-          mutate('outcome' = outcome_,
-                 'procedures' = procedures_,
-                 'weights' = weights)
-        
-        fold_risk <-
+        fold_IF <-
           df_IF %>%
           filter(fold_id == fold) %>%
           select(subject_id, trial_id, chi_IF, eligible) %>%
@@ -234,38 +221,59 @@ for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
           group_by(subject_id, projection) %>%
           summarise('risk_IF' = sum(w * (-2 * psi_hat * eligible/p_elig * chi_IF)),
                     'risk_IF_adj' = sum(w * (psi_hat^2 - 2 * psi_hat * eligible/p_elig * chi_IF))) %>%
-          group_by(projection) %>%
-          summarise('risk' = mean(risk_IF),
-                    'risk_adj' = mean(risk_IF_adj),
-                    'n_subjects' = n()) %>%
-          inner_join(proj_summary, by = 'projection') %>% 
-          mutate('outcome' = outcome_,
-                 'procedures' = procedures_,
-                 'weights' = weights)
+          ungroup() %>% 
+          mutate('fold_id' = fold)
         
-        df_risk <-
-          df_risk %>%
-          bind_rows(fold_risk)
-        
-        df_mse <- 
-          df_mse %>% 
-          bind_rows(fold_mse)
+        tmp_IF <- 
+          tmp_IF %>% 
+          bind_rows(fold_IF)
         
       }
     }
+    
+    
+    tmp_risk <- 
+      tmp_IF %>% 
+      group_by(projection) %>%
+      summarise('risk' = mean(risk_IF),
+                'risk_adj' = mean(risk_IF_adj),
+                'sd_risk' = sd(risk_IF)/sqrt(n()),
+                'sd_risk_adj' = sd(risk_IF_adj)/sqrt(n()),
+                'n_subjects' = n()) %>%
+      mutate('outcome' = outcome_,
+             'procedures' = procedures_,
+             'weights' = weights)
+    
+    df_risk <-
+      df_risk %>%
+      bind_rows(tmp_risk)
+    
+    ### Compute Diff to Minimizer
+    best <- 
+      tmp_risk %>% 
+      ungroup() %>% 
+      slice_min(risk_adj, n = 1) %>% 
+      pull(projection)
+    
+    tmp_diff <-
+      tmp_IF %>%
+      group_by(fold_id, subject_id) %>%
+      mutate('diff_adj' = risk_IF_adj - risk_IF_adj[projection == best]) %>%
+      group_by(projection) %>%
+      summarise('gap_adj' = mean(diff_adj),
+                'sd_diff_adj' = sd(diff_adj) / sqrt(n())) %>%
+      mutate('diff_SE' = ifelse(gap_adj == 0, 0, gap_adj/sd_diff_adj)) %>% 
+      mutate('outcome' = outcome_,
+             'procedures' = procedures_,
+             'weights' = weights)
+    
+    df_diff <- 
+      df_diff %>% 
+      bind_rows(tmp_diff)
+    
   }
 }
-write_csv(df_risk, glue('{data_dir}/tv_effects/weight_projection_risk_byfold.csv'))
-write_csv(df_mse, glue('{data_dir}/tv_effects/weight_projection_mse_byfold.csv'))
-
-df_risk <- 
-  df_risk %>% 
-  group_by(outcome, procedures, weights, projection) %>% 
-  summarise('risk' = mean(risk),
-            'risk_adj' = mean(risk_adj),
-            'weighted_sd' = weighted.mean(weighted_sd, sqrt(n_subjects - 1))/sqrt(n()),
-            'weighted_sd_adj' = 1/2 * weighted_sd) %>% 
-  ungroup() 
+write_csv(df_diff, glue('{data_dir}/tv_effects/weight_projection_diff_SE.csv'))
 
 best_projections <- 
   df_risk %>% 
@@ -279,35 +287,9 @@ best_projections_adj <-
   filter(risk_adj == min(risk_adj)) %>% 
   ungroup()
 
-df_mse <- 
-  df_mse %>% 
-  group_by(outcome, procedures, weights, projection) %>% 
-  summarise('mse' = mean(mse),
-            'wELIG_mse' = mean(wELIG_mse))
-
-best_projections_mse <- 
-  df_mse %>% 
-  group_by(outcome, procedures, weights) %>% 
-  filter(mse == min(mse)) %>% 
-  ungroup() 
-
-best_projections_wmse <- 
-  df_mse %>% 
-  group_by(outcome, procedures, weights) %>% 
-  filter(wELIG_mse == min(wELIG_mse)) %>% 
-  ungroup()
-
-
-
 write_csv(df_risk, glue('{data_dir}/tv_effects/weight_projection_risk.csv'))
-write_csv(df_mse, glue('{data_dir}/tv_effects/weight_projection_mse.csv'))
 write_csv(best_projections, glue('{data_dir}/tv_effects/best_projections.csv'))
 write_csv(best_projections_adj, glue('{data_dir}/tv_effects/best_projections_adj.csv'))
-write_csv(best_projections_mse, glue('{data_dir}/tv_effects/best_projections_mse.csv'))
-write_csv(best_projections_wmse, glue('{data_dir}/tv_effects/best_projections_wmse.csv'))
-
-
-
 
 
 ### Projection Step (on All Data) + Compute Variance
@@ -318,10 +300,10 @@ df_projections <- NULL
 for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
   for(procedures_ in c('AGB/RYGB/SLEEVE', 'RYGB', 'SLEEVE', 'RYGB/SLEEVE')) {
     cat(outcome_, procedures_, '\n')
-
+    
     ### Subject Specific IF Contributions
     df_IF <- read_parquet(glue('{data_dir}/tv_effects/IF_contributions/subject_IF_{outcome_}_{gsub("/", "-", procedures_)}.parquet'))
-
+    
     if(procedures_ == 'AGB/RYGB/SLEEVE') {
       t_range <- 1:84
       sk2 <- c(24, 48)
@@ -339,12 +321,12 @@ for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
       sk2 <- c(48, 72)
       sk3 <- c(40, 56, 72)
     }
-
+    
     df_info <-
       df_results %>%
       filter(outcome == outcome_) %>%
       filter(procedures == procedures_)
-
+    
     ### w(m) options
     ### unifom w(m) = 1
     ### inv_elig = 1/P(E[m] = 1) (eg. to cancel out P(E[m] = 1) in estimating eqn
@@ -352,7 +334,7 @@ for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
       if(weights == 'uniform') {
         w <- rep(1, length(t_range))
       }
-
+      
       ### Constant projection
       cat('Constant Projection\n')
       beta_constant <-
@@ -363,7 +345,7 @@ for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
                 form = 'constant',
                 ate_vec = df_info$chi_DR,
                 p_elig = df_info$p_elig)
-
+      
       var_beta_constant <-
         var_beta(df_IF = df_IF,
                  beta = beta_constant$x,
@@ -372,7 +354,7 @@ for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
                  form = 'constant',
                  ate_vec = df_info$chi_DR,
                  p_elig = df_info$p_elig)
-
+      
       ### Linear Projection
       cat('Linear Projection\n')
       beta_linear <-
@@ -384,7 +366,7 @@ for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
                 ate_vec = df_info$chi_DR,
                 p_elig = df_info$p_elig,
                 poly_k = 1)
-
+      
       var_beta_linear <-
         var_beta(df_IF = df_IF,
                  beta = beta_linear$x,
@@ -394,15 +376,15 @@ for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
                  ate_vec = df_info$chi_DR,
                  p_elig = df_info$p_elig,
                  poly_k = 1)
-
-
+      
+      
       ### Cubic Projection
       cat('Cubic Projection\n')
       cubic_start <-
         lm(chi_DR ~ trial_id + I(trial_id^2) + I(trial_id^3),
            data = df_info,
            weight = p_elig)
-
+      
       beta_cubic <-
         nleqslv(x = coef(cubic_start),
                 fn = estimating_eqn,
@@ -412,7 +394,7 @@ for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
                 ate_vec = df_info$chi_DR,
                 p_elig = df_info$p_elig,
                 poly_k = 3)
-
+      
       var_beta_cubic <-
         var_beta(df_IF = df_IF,
                  beta = beta_cubic$x,
@@ -422,7 +404,7 @@ for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
                  ate_vec = df_info$chi_DR,
                  p_elig = df_info$p_elig,
                  poly_k = 3)
-
+      
       ### Spline Projections
       cat('Spline Projection\n')
       beta_spline_2 <-
@@ -434,7 +416,7 @@ for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
                 ate_vec = df_info$chi_DR,
                 p_elig = df_info$p_elig,
                 spline_knots = sk2)
-
+      
       var_beta_spline_2 <-
         var_beta(df_IF = df_IF,
                  beta = beta_spline_2$x,
@@ -444,7 +426,7 @@ for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
                  ate_vec = df_info$chi_DR,
                  p_elig = df_info$p_elig,
                  spline_knots = sk2)
-
+      
       beta_spline_3 <-
         nleqslv(x = c(0,0,0,0,0),
                 fn = estimating_eqn,
@@ -454,7 +436,7 @@ for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
                 ate_vec = df_info$chi_DR,
                 p_elig = df_info$p_elig,
                 spline_knots = sk3)
-
+      
       var_beta_spline_3 <-
         var_beta(df_IF = df_IF,
                  beta = beta_spline_3$x,
@@ -464,16 +446,16 @@ for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
                  ate_vec = df_info$chi_DR,
                  p_elig = df_info$p_elig,
                  spline_knots = sk3)
-
+      
       basis2 <- ns(x = t_range, knots = sk2)
       basis3 <- ns(x = t_range, knots = sk3)
-
+      
       ### Design Matricies
       X_linear <- cbind(1, t_range)
       X_cubic <- cbind(1, t_range, t_range^2, t_range^3)
       X_s2 <- cbind(1, basis2)
       X_s3 <- cbind(1, basis3)
-
+      
       ### Compute induced PSI
       df_tmp <-
         df_info %>%
@@ -487,15 +469,15 @@ for(outcome_ in c('delta_6mo', 'delta_1yr', 'delta_2yr', 'delta_3yr')) {
                'sd_cubic' = compute_SD(X_cubic, var_beta_cubic),
                'sd_spline_2' = compute_SD(X_s2, var_beta_spline_2),
                'sd_spline_3' = compute_SD(X_s3, var_beta_spline_3)) %>%
-
+        
         pivot_longer(cols = c(contains('psi_'), contains('sd_')),
                      names_to = c('.value', 'projection'),
                      names_pattern = "^([^_]+)_(.+)$") %>%
         rename('psi_hat' = psi) %>%
         mutate('weights' = weights)
-
+      
       df_projections <- bind_rows(df_projections, df_tmp)
-
+      
       cat('\n--------\n')
     }
   }

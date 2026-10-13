@@ -1,6 +1,7 @@
 library(tidyverse)
 library(glue)
 library(patchwork)
+library(kableExtra)
 
 source('scripts/helpers.R')
 source('scripts/analysis/EIF_helpers.R')
@@ -191,8 +192,10 @@ df_hypothesis <-
 
 
 df_risk <- read_csv(glue('{data_dir}/tv_effects/weight_projection_risk.csv'))
+df_diff <- read_csv(glue('{data_dir}/tv_effects/weight_projection_diff_SE.csv'))
 df_risk <- 
   df_risk %>% 
+  inner_join(df_diff) %>% 
   mutate('outcome' = case_when(outcome == 'delta_6mo' ~ '6 Months',
                                outcome == 'delta_1yr' ~ '1 Year',
                                outcome == 'delta_2yr' ~ '2 Years', 
@@ -217,15 +220,17 @@ df_risk <-
   group_by(outcome, procedures, weights) %>% 
   mutate('min_risk' = risk == min(risk),
          'min_risk_adj' = risk_adj == min(risk_adj),
-         'within_tol' = abs(risk_adj-min(risk_adj))/weighted_sd[which.min(risk_adj)] <= 1/4,
-         'min_risk_within_tol' = as.numeric(projection) == min(as.numeric(projection[within_tol]))) %>% 
-  select(-within_tol) %>% 
+         'within_tol_half' = diff_SE <= 1/2,
+         'min_risk_within_tol_half' = as.numeric(projection) == min(as.numeric(projection[within_tol_half])),
+         'within_tol_1' = diff_SE <= 1,
+         'min_risk_within_tol_1' = as.numeric(projection) == min(as.numeric(projection[within_tol_1]))) %>% 
+  select(-within_tol_1, -within_tol_half) %>% 
   ungroup()
 
 ### Table S2
 df_risk %>% 
   group_by(comparison, outcome) %>% 
-  mutate('sd_diff' = abs( risk_adj - min(risk_adj) )/weighted_sd[which.min(risk_adj)]) %>% 
+  mutate('sd_diff' = diff_SE) %>% 
   mutate('summary' = paste0(sprintf('%0.3f', risk_adj), ' (', sprintf('%0.2f', sd_diff), ')')) %>% 
   ungroup() %>% 
   select(comparison, outcome, projection, summary) %>% 
@@ -245,9 +250,10 @@ df_latex <-
     df_risk %>% 
       group_by(comparison, outcome) %>% 
       summarise('minimizer' = projection[min_risk_adj],
-                'tol_minimizer' = projection[min_risk_within_tol]),
+                'tol_minimizer_halfSE' = projection[min_risk_within_tol_half],
+                'tol_minimizer_1SE' = projection[min_risk_within_tol_1]),
     by = c('comparison', 'outcome')) %>% 
-  select(comparison, outcome, minimizer, tol_minimizer, interval) %>% 
+  select(comparison, outcome, minimizer, tol_minimizer_halfSE, tol_minimizer_1SE, interval) %>% 
   arrange(comparison, outcome) 
 
 kbl(df_latex, align = 'c', format = 'latex') %>% 
