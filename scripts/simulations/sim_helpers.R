@@ -7,23 +7,28 @@ EIF_projection <- function(df_IF) {
   sk3 <- c(9, 18, 27)
   
   ### Compute values of CHI for projection and evaluation
+  ### Cross average of sub folds in simulations due to less variation
+  ### between half/quarter estimates than in bariatric surgery EHR data
   df_chi <-
     df_IF %>%
     group_by(trial_id, fold_id) %>%
     summarise('chi_DR' = mean(chi_IF[eligible == 1]),
-              'chi_DR_for_proj' = mean(chi_IF_sub[eligible == 1]),
+              'chi_sub' = mean(chi_IF_sub[eligible == 1]),
               'p_treatment' = mean(surgery[eligible == 1]),
               'p_elig' = mean(eligible),
               'n' = n(),
-              'n_elig' = sum(eligible)) %>% 
+              'n_elig' = sum(eligible),
+              .groups = 'drop') %>% 
     group_by(trial_id) %>% 
-    mutate('p_elig_for_proj' = (sum(n_elig) - n_elig)/(sum(n) - n)) %>% 
+    mutate('p_elig_for_proj' = (sum(n_elig) - n_elig)/(sum(n) - n),
+           'chi_DR_for_proj' = (sum(n_elig * chi_sub) - n_elig * chi_sub)/(sum(n_elig) - n_elig)) %>% 
     ungroup() %>% 
-    select(-n, -n_elig)
+    select(-n, -n_elig, -chi_sub)
   
   ### Evaluate Loss Functions
   df_risk <- NULL
-  df_sse <- NULL
+  df_diff <- NULL
+  tmp_IF <- NULL
   
   for(fold in 1:max(df_chi$fold_id)) {
     df_fold <- 
@@ -175,21 +180,10 @@ EIF_projection <- function(df_IF) {
         rename('psi_hat' = psi) %>%
         mutate('weights' = weights)
       
-      proj_summary <- 
-        df_projections %>% 
-        group_by(projection) %>% 
-        summarise('weighted_sd' = weighted.mean(sd, p_elig))
       
       
       ### Evaluate Loss Function
-      fold_sse <- 
-        df_projections %>% 
-        group_by(projection) %>% 
-        summarise('mse' = sum( (psi_hat - chi_DR)^2 ),
-                  'wELIG_mse' = sum( p_elig * (psi_hat - chi_DR)^2 )) %>% 
-        mutate('weights' = weights)
-      
-      fold_risk <-
+      fold_IF <-
         df_IF %>%
         filter(fold_id == fold) %>%
         select(subject_id, trial_id, chi_IF, eligible) %>%
@@ -197,43 +191,57 @@ EIF_projection <- function(df_IF) {
         group_by(subject_id, projection) %>%
         summarise('risk_IF' = sum(w * (-2 * psi_hat * eligible/p_elig * chi_IF)),
                   'risk_IF_adj' = sum(w * (psi_hat^2 - 2 * psi_hat * eligible/p_elig * chi_IF))) %>%
-        group_by(projection) %>%
-        summarise('risk' = mean(risk_IF),
-                  'risk_adj' = mean(risk_IF_adj),
-                  'n_subjects' = n()) %>%
-        inner_join(proj_summary, by = 'projection') %>% 
-        mutate('weights' = weights)
+        ungroup() %>% 
+        mutate('fold_id' = fold)
       
-      df_risk <-
-        df_risk %>%
-        bind_rows(fold_risk)
+      tmp_IF <- 
+        tmp_IF %>% 
+        bind_rows(fold_IF)
       
-      df_sse <- 
-        df_sse %>% 
-        bind_rows(fold_sse)
+      
       
     }
   }
   
-  df_risk <- 
-    df_risk %>% 
-    group_by(weights, projection) %>% 
-    summarise('risk' = mean(risk),
-              'risk_adj' = mean(risk_adj),
-              'weighted_sd' = weighted.mean(weighted_sd, sqrt(n_subjects - 1))/sqrt(n()),
-              'weighted_sd_adj' = 1/2 * weighted_sd) %>% 
-    ungroup() 
+  tmp_risk <- 
+    tmp_IF %>% 
+    group_by(projection) %>%
+    summarise('risk' = mean(risk_IF),
+              'risk_adj' = mean(risk_IF_adj),
+              'sd_risk' = sd(risk_IF)/sqrt(n()),
+              'sd_risk_adj' = sd(risk_IF_adj)/sqrt(n()),
+              'n_subjects' = n()) %>%
+    mutate('weights' = weights)
   
-  df_sse <- 
-    df_sse %>% 
-    group_by(weights, projection) %>% 
-    summarise('mse' = mean(mse),
-              'wELIG_mse' = mean(wELIG_mse)) %>% 
-    ungroup()
+  df_risk <-
+    df_risk %>%
+    bind_rows(tmp_risk)
+  
+  ### Compute Diff to Minimizer
+  best <- 
+    tmp_risk %>% 
+    ungroup() %>% 
+    slice_min(risk_adj, n = 1) %>% 
+    pull(projection)
+  
+  tmp_diff <-
+    tmp_IF %>%
+    group_by(fold_id, subject_id) %>%
+    mutate('diff_adj' = risk_IF_adj - risk_IF_adj[projection == best]) %>%
+    group_by(projection) %>%
+    summarise('gap_adj' = mean(diff_adj),
+              'sd_diff_adj' = sd(diff_adj) / sqrt(n())) %>%
+    mutate('diff_SE' = ifelse(gap_adj == 0, 0, gap_adj/sd_diff_adj)) %>% 
+    mutate('weights' = weights)
+  
+  df_diff <- 
+    df_diff %>% 
+    bind_rows(tmp_diff)
+  
   
   df_loss <- 
     df_risk %>% 
-    inner_join(df_sse, by = c('weights', 'projection'))
+    inner_join(df_diff, by = c('weights', 'projection'))
   
   
   return(df_loss)

@@ -441,36 +441,36 @@ fit_EIF_chi <- function(df_trials, mu_covariates, pi_covariates, xi_covariates, 
            'sw_treatment' = pmin(sw_treatment, sw_treatment_bound),
            'w_treatment_m' = pmin(w_treatment_m, w_treatment_bound_m),
            'sw_treatment_m' = pmin(sw_treatment_m, sw_treatment_bound_m)) %>% 
-  ungroup()
-
-standardize_IF <- 
-  baseline_trials %>% 
-  mutate('chi_IF' = mu1_hat - mu0_hat + (2 * surgery - 1) * w_treatment * (pct_weight_change - muA_hat),
-         'chi_IFj' = mu1_hat - mu0_hat + (2 * surgery - 1) * w_treatment * (pct_weight_change - muAj_hat),
-         'chi_cross_IF' = mu1_hat - mu0_hat + (2 * surgery_m - 1) * w_treatment_m *  xi_j/xi_m * (pct_weight_change_m - muAm_hat)) %>% 
-  select(subject_id, baseline_trial_id, trial_id, fold_id, eligible, 
-         surgery, surgery_m, pct_weight_change, pct_weight_change_m,
-         mu1_hat, mu0_hat, muA_hat, mu1j_hat, mu0j_hat, muAj_hat, mu1m_hat, mu0m_hat, muAm_hat, 
-         pi_hat, pim_hat, w_treatment, w_treatment_m, xi_m, xi_j,
-         chi_IF, chi_IFj, chi_cross_IF) %>% 
-  mutate('eligible' = as.numeric(replace(eligible, is.na(eligible), F)),
-         'chi_IF' = replace(chi_IF, is.na(chi_IF), 0),
-         'chi_IFj' = replace(chi_IFj, is.na(chi_IFj), 0))
-
-standardization_matrix <- 
-  standardize_IF %>% 
-  group_by(baseline_trial_id, trial_id) %>%
-  summarise('chi_DR' = mean(chi_IF),
-            'chi_DRj' = mean(chi_IFj),
-            'chi_cross' = mean(chi_cross_IF),
-            'chi_gformula' = mean(mu1_hat - mu0_hat),
-            'p_treatment' = mean(surgery)) %>% 
-  ungroup()
-
-return( list('df_IF' = df_IF, 
-             'standardize_IF' = standardize_IF,
-             'standardization_matrix' = standardization_matrix,
-             'baseline_trials' = baseline_trials) )
+    ungroup()
+  
+  standardize_IF <- 
+    baseline_trials %>% 
+    mutate('chi_IF' = mu1_hat - mu0_hat + (2 * surgery - 1) * w_treatment * (pct_weight_change - muA_hat),
+           'chi_IFj' = mu1_hat - mu0_hat + (2 * surgery - 1) * w_treatment * (pct_weight_change - muAj_hat),
+           'chi_cross_IF' = mu1_hat - mu0_hat + (2 * surgery_m - 1) * w_treatment_m *  xi_j/xi_m * (pct_weight_change_m - muAm_hat)) %>% 
+    select(subject_id, baseline_trial_id, trial_id, fold_id, eligible, 
+           surgery, surgery_m, pct_weight_change, pct_weight_change_m,
+           mu1_hat, mu0_hat, muA_hat, mu1j_hat, mu0j_hat, muAj_hat, mu1m_hat, mu0m_hat, muAm_hat, 
+           pi_hat, pim_hat, w_treatment, w_treatment_m, xi_m, xi_j,
+           chi_IF, chi_IFj, chi_cross_IF) %>% 
+    mutate('eligible' = as.numeric(replace(eligible, is.na(eligible), F)),
+           'chi_IF' = replace(chi_IF, is.na(chi_IF), 0),
+           'chi_IFj' = replace(chi_IFj, is.na(chi_IFj), 0))
+  
+  standardization_matrix <- 
+    standardize_IF %>% 
+    group_by(baseline_trial_id, trial_id) %>%
+    summarise('chi_DR' = mean(chi_IF),
+              'chi_DRj' = mean(chi_IFj),
+              'chi_cross' = mean(chi_cross_IF),
+              'chi_gformula' = mean(mu1_hat - mu0_hat),
+              'p_treatment' = mean(surgery)) %>% 
+    ungroup()
+  
+  return( list('df_IF' = df_IF, 
+               'standardize_IF' = standardize_IF,
+               'standardization_matrix' = standardization_matrix,
+               'baseline_trials' = baseline_trials) )
 }
 
 

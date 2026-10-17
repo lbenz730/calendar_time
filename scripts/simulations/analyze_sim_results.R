@@ -12,8 +12,7 @@ df_sm <-
     map_dfr(dir('sim_outputs/n500/standardization_metrics/', full.names = T), read_parquet),
     map_dfr(dir('sim_outputs/n1000/standardization_metrics/', full.names = T), read_parquet),
     map_dfr(dir('sim_outputs/n5000/standardization_metrics/', full.names = T), read_parquet),
-    map_dfr(dir('sim_outputs/n10000/standardization_metrics/', full.names = T), read_parquet),
-    map_dfr(dir('sim_outputs/n25000/standardization_metrics/', full.names = T), read_parquet)
+    map_dfr(dir('sim_outputs/n10000/standardization_metrics/', full.names = T), read_parquet)
   )
 
 true_sigma <- read_csv('sim_inputs/true_sigma_ratios.csv') 
@@ -41,7 +40,7 @@ df_cross <-
   mutate('n_subjects' = as.factor(paste0('"', n_subjects, '"'))) %>% 
   mutate('n_subjects' = fct_relevel(as.factor(n_subjects), 
                                     paste0('"', c('n = 100', 'n = 500', 'n = 1,000', 'n = 5,000', 
-                                                  'n = 10,000', 'n = 25,000', 'Truth'), '"')))
+                                                  'n = 10,000', 'Truth'), '"')))
 
 p1 <- 
   ggplot(df_cross, aes(x = trial_id, y = mean_sigma2_ratio)) + 
@@ -60,15 +59,14 @@ p1 <-
   )
 
 
-### Analysis of Loss Fx
-df_loss <- 
+## Analysis of Loss Fx
+df_loss <-
   bind_rows(
     map_dfr(dir('sim_outputs/n100/loss_fx/', full.names = T), read_parquet),
     map_dfr(dir('sim_outputs/n500/loss_fx/', full.names = T), read_parquet),
     map_dfr(dir('sim_outputs/n1000/loss_fx/', full.names = T), read_parquet),
     map_dfr(dir('sim_outputs/n5000/loss_fx/', full.names = T), read_parquet),
-    map_dfr(dir('sim_outputs/n10000/loss_fx/', full.names = T), read_parquet),
-    map_dfr(dir('sim_outputs/n25000/loss_fx/', full.names = T), read_parquet),
+    map_dfr(dir('sim_outputs/n10000/loss_fx/', full.names = T), read_parquet)
   )
 
 ### Use SD-based difference Rule
@@ -82,8 +80,7 @@ tolerance_sd <- function(c) {
                                     projection == 'spline_3' ~ 5)) %>% 
     group_by(sim_id, trt_change, shift, n_subjects) %>% 
     mutate('min_risk_adj' = min(risk_adj)) %>% 
-    mutate('tolerance_sd' =  weighted_sd[which.min(risk_adj)]) %>% 
-    mutate('within_tolerance_sd' = abs(risk_adj - min_risk_adj)/tolerance_sd <= c) %>% 
+    mutate('within_tolerance_sd' = diff_SE <= c) %>% 
     mutate('best_within_tol_sd' = complexity == min(complexity[within_tolerance_sd])) %>% 
     group_by(parameter_id, trt_change, shift, n_subjects, projection) %>% 
     summarise('best_proj_within_tol_sd' = mean(best_within_tol_sd)) %>% 
@@ -106,18 +103,18 @@ tolerance_sd <- function(c) {
 
 
 df_tolerance_sd <- 
-  map_dfr(c(0, 0.25, 0.5, 0.75, 1), tolerance_sd) %>% 
+  map_dfr(c(0, 0.5, 1), tolerance_sd) %>% 
   mutate('trt_change' = gsub('\\+\\s', '\\+\n', trt_change)) %>% 
   mutate('trt_change' = fct_relevel(paste0('"', trt_change, '"'), paste0('"', levels(as.factor(trt_change)), '"')))
 
 
-p2 <- 
+p2 <-
   ggplot(df_tolerance_sd, aes(x = subjects_f, y = best_proj_within_tol_sd)) +
   facet_grid(fct_rev(paste0('"', shift, '"')) ~ trt_change,
              labeller = label_parsed) +
   geom_point(aes(color = projection, shape = as.factor(c)), size = 5, alpha = 0.5) + 
   scale_y_continuous(limits = c(0,1), labels = scales::percent) + 
-  scale_shape_manual(values = c(1,16,6,3,8))  +
+  scale_shape_manual(values = c(1,16,6, 3))  +
   theme(legend.title = element_text(size = 16),
         strip.text = element_text(size = 12),
         axis.text.y = element_text(size = 14),
@@ -125,7 +122,7 @@ p2 <-
         plot.tag = element_text(size = 16),
         legend.box = 'vertical') + 
   labs(x = '# of Subjects',
-       y = expression(paste('% of Simulations Minimizing Risk (Within ', c, epsilon, ')')),
+       y = expression(paste('% of Simulations Minimizing Risk (Within ', c,  '-SE)')),
        color = expression(paste('Projection ', psi(m * ";" * bold(beta)))),
        shape = '# of Standard Deviations Tolerance (c)',
        title = 'Frequency of Projection Selection',
@@ -134,16 +131,7 @@ p2 <-
   )
 
 p2/p1
-ggsave('figures/sim_results.pdf', height = 2 * 7, width = 12)
-
-### Summary of scenarios 
-input_summary <- 
-  read_csv('sim_inputs/input_summary.csv') %>% 
-  mutate('parameter_id' = 1:nrow(.),
-         'region' = case_when(outcome_model %in% c('constant', 'effect_mod') ~ 'Null 0',
-                              outcome_model %in% c('spline', 'linear') ~ 'Null 1',
-                              covariate_shift == 'no_covariate_shift' & outcome_model %in% c('linear_effect_mod', 'spline_effect_mod') ~ 'Null 1',
-                              T ~ 'Alternative'))
+ggsave('figures/simulations/sim_results.pdf', height = 2 * 7, width = 12)
 
 ### Hypothesis Testing Results 
 ### Loading in all hypothesis testing results
@@ -153,9 +141,17 @@ df_hypothesis <-
     map_dfr(dir('sim_outputs/n500/hypothesis_testing/', full.names = T), read_parquet),
     map_dfr(dir('sim_outputs/n1000/hypothesis_testing/', full.names = T), read_parquet),
     map_dfr(dir('sim_outputs/n5000/hypothesis_testing/', full.names = T), read_parquet),
-    map_dfr(dir('sim_outputs/n10000/hypothesis_testing/', full.names = T), read_parquet),
-    map_dfr(dir('sim_outputs/n25000/hypothesis_testing/', full.names = T), read_parquet)
+    map_dfr(dir('sim_outputs/n10000/hypothesis_testing/', full.names = T), read_parquet)
   )
+
+
+input_summary <- 
+  read_csv('sim_inputs/input_summary.csv') %>% 
+  mutate('parameter_id' = 1:nrow(.),
+         'region' = case_when(outcome_model %in% c('constant', 'effect_mod') ~ 'Null 0',
+                              outcome_model %in% c('spline', 'linear') ~ 'Null 1',
+                              covariate_shift == 'no_covariate_shift' & outcome_model %in% c('linear_effect_mod', 'spline_effect_mod') ~ 'Null 1',
+                              T ~ 'Alternative'))
 
 df_hypothesis <- 
   df_hypothesis %>% 
@@ -218,5 +214,5 @@ ggplot(df_delta, aes(x = subjects_f, y = correct_rate)) +
        title = expression(paste('Hypothesis Testing for ', theta)),
        # subtitle = 'Simulation Results',
        shape = 'True Hypothesis Region')
-ggsave('figures/hypothesis_testing_results.png', width = 16, height = 9)
-ggsave('figures/hypothesis_testing_results.pdf', width = 12, height = 7)
+ggsave('figures/simulations/hypothesis_testing_results.png', width = 16, height = 9)
+ggsave('figures/simulations/hypothesis_testing_results.pdf', width = 12, height = 7)
